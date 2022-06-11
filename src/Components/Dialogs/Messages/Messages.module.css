@@ -1,0 +1,31 @@
+.userMessage {
+    display: flex;
+}
+
+h4 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.userText {
+    margin: 0;
+    font-size: 12px;
+}
+
+
+.userMsg{
+    margin: 10px 5px;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    background-color: rgba(39,170,225, .1);
+    border-radius: 20px;
+}
+
+.userImg {
+    padding: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+}
