@@ -1,8 +1,11 @@
+import {rerenderEntireTree} from "../render";
+
 let state = {
     newsFeedPage: {
         posts: [
             {
                 id: 1,
+                postImg: 'https://themified.com/friend-finder/images/post-images/1.jpg',
                 personIco: 'https://themified.com/friend-finder/images/users/user-5.jpg',
                 name: 'Alexis Clark',
                 like: '13',
@@ -19,6 +22,7 @@ let state = {
             },
             {
                 id: 2,
+                postImg: 'https://themified.com/friend-finder/images/post-images/2.jpg',
                 personIco: 'https://themified.com/friend-finder/images/users/user-3.jpg',
                 name: 'Sophia Lee',
                 like: '75',
@@ -30,8 +34,10 @@ let state = {
             }
 
 
-        ]
+        ],
+        newPostText: '',
     },
+
     messagesPage: {
         dialogs: [
             {
@@ -76,9 +82,73 @@ let state = {
                 userName: 'Sarah Cruiz',
                 userMessage: 'Hi honey, how are you doing???? Long time no see. Where have you been?'
             }
+        ],
+        newMessageText: ''
+    },
+    sidebar: {
+        users: [{
+            id: 1, userImg: 'https://themified.com/friend-finder/images/users/user-2.jpg',
+            userName: 'Linda Lohan',
+        },
+            {
+                id: 2, userImg: 'https://themified.com/friend-finder/images/users/user-10.jpg',
+                userName: 'Julia Cox',
+
+            },
+            {
+                id: 3, userImg: 'https://themified.com/friend-finder/images/users/user-3.jpg',
+                userName: 'Sophia Lee',
+
+            },
+            {
+                id: 4, userImg: 'https://themified.com/friend-finder/images/users/user-4.jpg',
+                userName: 'John Doe',
+
+            },
+            {
+                id: 5, userImg: 'https://themified.com/friend-finder/images/users/user-9.jpg',
+                userName: 'Anna Young',
+
+            }
+
         ]
     }
+}
+export let addPost = () => {
+    let newPost =
+        {
+            id: 3,
+            personIco: 'https://themified.com/friend-finder/images/users/user-1.jpg',
+            name: 'Sarah Cruiz',
+            like: '0',
+            dislike: '0',
+            infoStatus: '',
+            message: state.newsFeedPage.newPostText
 
+        };
+    state.newsFeedPage.posts.push(newPost);
+    state.newsFeedPage.newPostText = '';
+    rerenderEntireTree(state);
+}
+export let updateNewPostText = (textPost) => {
+    state.newsFeedPage.newPostText = textPost;
+    rerenderEntireTree(state)
+}
+export let sendMessage = () => {
+    let newTextMessage = {
+        id: 4,
+        userImg: 'https://themified.com/friend-finder/images/users/user-1.jpg',
+        userName: 'Sarah Cruiz',
+        userMessage: state.messagesPage.newMessageText
+
+    }
+    state.messagesPage.messages.push(newTextMessage);
+    state.messagesPage.newMessageText = '';
+    rerenderEntireTree(state)
+}
+export let updateNewDialogsText = (textDialogs) => {
+    state.messagesPage.newMessageText = textDialogs;
+    rerenderEntireTree(state)
 }
 export default state;
 

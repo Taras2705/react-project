@@ -1,4 +1,7 @@
-
+*{
+    margin: 0;
+    padding: 0;
+}
 .userImg {
     padding: 20px;
     width: 40px;
