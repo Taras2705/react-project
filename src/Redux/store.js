@@ -1,10 +1,7 @@
-import profileReducer from "./profile-reduser";
+import newsFeedReducer from "./newsFeed-reduser";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebur-reducer";
-const addPost = 'ADD-POST';
-const updateNewPostText = 'UPDATE-NEW-POST-TEXT';
-const sendMessage = 'SEND-MESSAGE';
-const updateNewDialogsText = 'UPDATE-NEW-DIALOGS-TEXT';
+
 let store = {
     _state: {
         newsFeedPage: {
@@ -133,7 +130,7 @@ let store = {
     },
 
     dispatch(action) {
-        this._state.newsFeedPage = profileReducer(this._state.newsFeedPage, action);
+        this._state.newsFeedPage = newsFeedReducer(this._state.newsFeedPage, action);
         this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
         this._state.sidebar=sidebarReducer(this._state.sidebar,action);
         this._callSubscriber(this._state);
