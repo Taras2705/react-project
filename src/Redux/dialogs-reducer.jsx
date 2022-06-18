@@ -1,6 +1,6 @@
 const sendMessage = 'SEND-MESSAGE';
 const updateNewDialogsText = 'UPDATE-NEW-DIALOGS-TEXT';
-let initialState={
+let initialState = {
     dialogs: [
         {
             id: 1, userImg: 'https://themified.com/friend-finder/images/users/user-2.jpg',
@@ -47,7 +47,7 @@ let initialState={
     ],
     newMessageText: ''
 }
-const dialogsReducer = (state=initialState, action) => {
+const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case sendMessage:
             let newTextMessage = {
@@ -56,18 +56,23 @@ const dialogsReducer = (state=initialState, action) => {
                 userName: 'Sarah Cruiz',
                 userMessage: state.newMessageText
 
+            };
+            return{
+                ...state,
+                newMessageText:'',
+                messages: [...state.messages,newTextMessage],
+
             }
-            state.messages.push(newTextMessage);
-            state.newMessageText = '';
-            return state
         case updateNewDialogsText:
-            state.newMessageText = action.textDialogs;
-            return state
+            return {
+                ...state,
+                newMessageText:action.textDialogs}
+
         default:
             return state;
     }
 }
 export const sendMessageActionCreator = () => ({type: sendMessage});
-
 export const updateNewDialogsTextActionCreator = (message) => ({type: updateNewDialogsText, textDialogs: message});
+
 export default dialogsReducer;

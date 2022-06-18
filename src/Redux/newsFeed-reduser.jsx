@@ -1,6 +1,6 @@
 const addPost = 'ADD-POST';
 const updateNewPostText = 'UPDATE-NEW-POST-TEXT';
-let initialState= {
+let initialState = {
     posts: [
         {
             id: 1,
@@ -34,15 +34,15 @@ let initialState= {
 
 
     ],
-        newPostText: '',
+    newPostText: '',
 }
 
-const newsFeedReducer = (state=initialState, action) => {
+const newsFeedReducer = (state = initialState, action) => {
     switch (action.type) {
         case addPost:
             let newPost =
                 {
-                    postImg: 'https://themified.com/friend-finder/images/post-images/1.jpg',
+                    postImg: 'https://themified.com/friend-finder/images/post-images/8.jpg',
                     id: 3,
                     personIco: 'https://themified.com/friend-finder/images/users/user-1.jpg',
                     name: 'Sarah Cruiz',
@@ -52,12 +52,18 @@ const newsFeedReducer = (state=initialState, action) => {
                     message: state.newPostText
 
                 };
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state
+            return {
+                ...state,
+                newPostText: '',
+                posts: [...state.posts, newPost],
+
+            };
+
         case updateNewPostText:
-            state.newPostText = action.textPost;
-            return state
+            return {
+                ...state,
+                newPostText: action.textPost
+            }
         default:
             return state
 

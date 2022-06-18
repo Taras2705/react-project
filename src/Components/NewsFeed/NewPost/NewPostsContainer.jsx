@@ -1,20 +1,24 @@
-import React from "react";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/newsFeed-reduser";
 import NewPosts from "./NewPosts";
+import {connect} from "react-redux";
 
 
-const NewPostsContainer = (props) => {
-let state=props.store.getState();
-    let publishPost = () => {
-        props.store.dispatch(addPostActionCreator());
+
+let mapStateToProps = (state) => {
+    return {
+        newPostText: state.newsFeedPage.newPostText
     }
-    let onPostChange = (text) => {
-        let action=updateNewPostTextActionCreator(text);
-        props.store.dispatch(action);
+}
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: () => {
+            dispatch(addPostActionCreator())
+        },
+        updateNewPostText: (text) => {
+            dispatch(updateNewPostTextActionCreator(text))
+        }
     }
-    return (
-        <NewPosts addPost={publishPost} updateNewPostText={onPostChange} newPostText={state.newsFeedPage.newPostText}/>
+}
 
-    )
-};
+const NewPostsContainer = connect(mapStateToProps, mapDispatchToProps)(NewPosts);
 export default NewPostsContainer;
