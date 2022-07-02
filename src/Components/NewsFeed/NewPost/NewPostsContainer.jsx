@@ -1,4 +1,4 @@
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/newsFeed-reduser";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/newsFeed-reducer";
 import NewPosts from "./NewPosts";
 import {connect} from "react-redux";
 

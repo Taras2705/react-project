@@ -1,4 +1,4 @@
-import newsFeedReducer from "./newsFeed-reduser";
+import newsFeedReducer from "./newsFeed-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebur-reducer";
 
