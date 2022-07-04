@@ -3,12 +3,15 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USER_COUNT = 'SET_TOTAL_USER_COUNT';
+const TOOGLE_IS_FATCHING='TOOGLE_IS_FATCHING'
+
 
 let initialState = {
     users: [],
     pageSize: 100,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFatching:false
 }
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -45,6 +48,11 @@ const usersReducer = (state = initialState, action) => {
                 ...state, totalUsersCount: action.count
             }
         }
+        case TOOGLE_IS_FATCHING:{
+            return{
+                ...state,isFatching: action.isFatching
+            }
+        }
         default:
             return state;
     }
@@ -54,6 +62,8 @@ export const unFollow = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setTotalUserCount = (totalUsersCount) => ({type: SET_TOTAL_USER_COUNT, count: totalUsersCount});
+export const toogleIsFatching=(isFatching)=>({type:TOOGLE_IS_FATCHING,isFatching})
+
 
 
 export default usersReducer;
