@@ -1,13 +1,6 @@
 import Users from "./Users";
 import {connect} from "react-redux";
-import {
-    follow,
-    setCurrentPage,
-    setTotalUserCount,
-    setUsers,
-    toogleIsFatching,
-    unFollow
-} from "../../Redux/users-reducer";
+import {follow, setCurrentPage, setTotalUserCount, setUsers, toogleIsFatching, unFollow} from "../../Redux/users-reducer";
 import React from "react";
 import * as axios from "axios";
 import Preloader from "../../coomon/Preloader/Preloader";
@@ -28,16 +21,13 @@ class UsersContainer extends React.Component {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
             this.props.toogleIsFatching(false);
             this.props.setUsers(response.data.items);
-
-
-
         })
 
     }
 
     render() {
         return (<>
-            {this.props.isFatching?<Preloader/>:null}
+            {this.props.isFatching ? <Preloader/> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
                    pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}
@@ -62,10 +52,5 @@ let mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-    follow,
-    unFollow,
-    setUsers,
-    setCurrentPage,
-    setTotalUserCount,
-    toogleIsFatching
+    follow, unFollow, setUsers, setCurrentPage, setTotalUserCount, toogleIsFatching
 })(UsersContainer);

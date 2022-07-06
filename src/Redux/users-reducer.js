@@ -8,7 +8,7 @@ const TOOGLE_IS_FATCHING='TOOGLE_IS_FATCHING'
 
 let initialState = {
     users: [],
-    pageSize: 100,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFatching:false

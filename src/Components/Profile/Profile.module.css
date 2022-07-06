@@ -1,0 +1,12 @@
+.photosProfile{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: -200px;
+    margin-left: 20px;
+    border:10px solid white;
+}
+.informationMe{
+    margin-top: 50px;
+}

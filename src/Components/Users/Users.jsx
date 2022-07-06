@@ -24,10 +24,11 @@ const Users = (props) => {
             {props.users.map(users => <div key={users.id}>
                 <div className={style.userComponent}>
                     <div className={style.usersInfo}>
-                        <img src={users.photos.small !== null ? users.photos.small : avatarUser}
+                        <NavLink to={'./../profile/'+users.id}><img src={users.photos.small !== null ? users.photos.small : avatarUser}
                              className={style.usersPhoto} alt=""/>
+                        </NavLink>
                         <div>
-                            <div><NavLink to='/peopleNearby' className={style.fullName}>{users.name}</NavLink></div>
+                            <div><NavLink to={'/profile/'+users.id} className={style.fullName}>{users.name}</NavLink></div>
                             <div className={style.specialty}>{users.status}</div>
                             <div className={style.location}>
                                 {'users.location.city'},{'users.location.country'}

@@ -1,7 +1,7 @@
 import s from "./User.module.css";
 import {NavLink} from "react-router-dom";
 
-const User = (props) => {
+const UserOnline = (props) => {
     return (
         <div className={s.friend}>
             <NavLink to='/messages'>
@@ -11,4 +11,4 @@ const User = (props) => {
         </div>
     )
 }
-export default User;
+export default UserOnline;
